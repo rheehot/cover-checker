@@ -51,7 +51,7 @@ public class NewCoverageChecker {
 	 */
 	public NewCoverageCheckReport check(List<FileCoverageReport> coverage, List<Diff> diff, int threshold, int fileThreshold) {
 		Map<String, List<Line>> diffMap = diff.stream()
-				.filter(d -> !d.getFileName().startsWith("src/test"))
+				.filter(d -> !d.getFileName().matches("[\\S]*src/test/[\\S]*"))
 				.filter(d -> !d.getDiffSectionList().isEmpty())
 				.peek(d -> logger.debug("diff file {}", d.getFileName()))
 				.collect(Collectors.toMap(Diff::getFileName
