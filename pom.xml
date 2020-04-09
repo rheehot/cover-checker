@@ -14,6 +14,7 @@
         <module>cover-checker-cobertura</module>
         <module>cover-checker-core</module>
         <module>cover-checker-console</module>
+        <module>cover-checker-jenkins</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -166,6 +167,10 @@
             <id>eclipse</id>
             <name>eclipse repository</name>
             <url>https://repo.eclipse.org/content/repositories/egit-releases/</url>
+        </repository>
+        <repository>
+            <id>repo.jenkins-ci.org</id>
+            <url>https://repo.jenkins-ci.org/public/</url>
         </repository>
     </repositories>
 </project>
