@@ -20,6 +20,7 @@
           ~ hpi-plugin.version: The HPI Maven Plugin version used by the plugin..
           ~ stapler-plugin.version: The Stapler Maven plugin version required by the plugin.
      -->
+        <hpi-plugin.version>3.13</hpi-plugin.version>
         <cover-checker.version>1.4.0</cover-checker.version>
     </properties>
     <name>cover-checker</name>
@@ -123,7 +124,7 @@
     <pluginRepositories>
         <pluginRepository>
             <id>repo.jenkins-ci.org</id>
-            <url>https://repo.jenkins-ci.org/public/</url>
+            <url>https://repo.jenkins-ci.org/releases/</url>
         </pluginRepository>
     </pluginRepositories>
 </project>

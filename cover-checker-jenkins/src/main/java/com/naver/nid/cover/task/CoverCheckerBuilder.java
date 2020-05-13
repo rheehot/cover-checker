@@ -3,6 +3,7 @@ package com.naver.nid.cover.task;
 import com.naver.nid.cover.Messages;
 import com.naver.nid.cover.model.CoverageType;
 import groovy.util.logging.Slf4j;
+import hudson.EnvVars;
 import hudson.Extension;
 import hudson.Launcher;
 import hudson.model.AbstractBuild;
@@ -12,9 +13,11 @@ import hudson.model.EnvironmentList;
 import hudson.tasks.BuildWrapper;
 import hudson.tasks.BuildWrapperDescriptor;
 import lombok.AllArgsConstructor;
+import org.apache.commons.lang.StringUtils;
 import org.kohsuke.stapler.DataBoundConstructor;
 
 import java.io.IOException;
+import java.util.Map;
 
 @Slf4j
 @AllArgsConstructor(onConstructor_= {@DataBoundConstructor})
@@ -33,7 +36,9 @@ public class CoverCheckerBuilder extends BuildWrapper {
         return new Environment() {
             @Override
             public boolean tearDown(AbstractBuild build, BuildListener listener) throws IOException, InterruptedException {
-                return super.tearDown(build, listener);
+                EnvVars environment = build.getEnvironment(listener);
+
+                return false;
             }
         };
     }
@@ -43,15 +48,19 @@ public class CoverCheckerBuilder extends BuildWrapper {
 
         @Override
         public String getDisplayName() {
-            return Messages.HelloWorldBuilder_DescriptorImpl_DisplayName();
+            return Messages.CoverCheckerBuilder_DescriptorImpl_DisplayName();
         }
 
-
+        @Override
+        public void calcFillSettings(String field, Map<String, Object> attributes) {
+            if (StringUtils.equals(field, "githubUrl")) {
+                attributes.putIfAbsent("github", "api.github.com");
+            }
+        }
 
         @Override
         public boolean isApplicable(AbstractProject<?, ?> abstractProject) {
-//            abstractProject.
-            return false;
+            return true;
         }
     }
 

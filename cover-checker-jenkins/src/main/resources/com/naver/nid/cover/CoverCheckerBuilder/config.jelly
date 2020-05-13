@@ -1,12 +1,27 @@
 <?jelly escape-by-default='true'?>
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
-    <f:entry title="${%Name}" field="name">
+    <f:entry title="${%githubToken}" field="ghToken">
         <f:textbox />
     </f:entry>
-    <f:advanced>
-        <f:entry title="${%French}" field="useFrench"
-                 description="${%FrenchDescr}">
-            <f:checkbox />
-        </f:entry>
-    </f:advanced>
+    <f:entry title="${%repo}" field="repo">
+        <f:textbox />
+    </f:entry>
+    <f:entry title="${%prNum}" field="prNum">
+        <f:textbox />
+    </f:entry>
+    <f:entry title="${%threshold}" field="threshold">
+        <f:textbox />
+    </f:entry>
+    <f:entry title="${%fileThreshold}" field="fileThreshold">
+        <f:textbox />
+    </f:entry>
+    <f:entry title="${%githubUrl}" field="githubUrl">
+        <f:textbox />
+    </f:entry>
+    <f:entry title="${%coverPath}" field="coverPath">
+        <f:textbox />
+    </f:entry>
+    <f:entry title="${%diffPath}" field="diffPath">
+        <f:textbox />
+    </f:entry>
 </j:jelly>
